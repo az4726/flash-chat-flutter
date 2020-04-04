@@ -1,4 +1,7 @@
+import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flash_chat/constants.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -25,12 +28,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 60.0,
                   ),
                 ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
+                ColorizeAnimatedTextKit(
+                  text: ['Flash Chat'],
+                  textStyle: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),
+                  colors: [
+                    Colors.yellow,
+                    Colors.orange,
+                    Colors.deepOrange,
+                    Colors.deepOrange[800],
+                    Colors.grey[800],
+                  ],
                 ),
               ],
             ),
@@ -39,47 +49,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Hero(
               tag: 'Login',
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  elevation: 5.0,
-                  color: Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: MaterialButton(
-                    onPressed: () {
-                      //Go to login screen.
-                      Navigator.pushNamed(context, 'login_screen');
-                    },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: Text(
-                      'Log In',
-                    ),
-                  ),
-                ),
-              ),
+              child: RoundedButton(Colors.lightBlueAccent, () {
+                Navigator.pushNamed(context, 'login_screen');
+              }, 'Log In'),
             ),
             Hero(
               tag: 'Register',
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.circular(30.0),
-                  elevation: 5.0,
-                  child: MaterialButton(
-                    onPressed: () {
-                      //Go to registration screen.
-                      Navigator.pushNamed(context, 'register_screen');
-                    },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: Text(
-                      'Register',
-                    ),
-                  ),
-                ),
-              ),
+              child: RoundedButton(Colors.blueAccent, () {
+                Navigator.pushNamed(context, 'register_screen');
+              }, 'Register'),
             ),
           ],
         ),
